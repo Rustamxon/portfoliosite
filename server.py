@@ -14,23 +14,23 @@ def html_page(page_name):
     return render_template(page_name)
 
 
-def save_to_txt_db(data):
-    with open('database.txt', mode='a') as database:
-        email = data['email']
-        subject = data['subject']
-        message = data['message']
-        db_file = database.write(
-            f'\n {email},{subject},{message} '
-        )
+# def save_to_txt_db(data):
+#     with open('database.txt', mode='a') as database:
+#         email = data['email']
+#         subject = data['subject']
+#         message = data['message']
+#         db_file = database.write(
+#             f'\n {email},{subject},{message} '
+#         )
 
 
 def save_to_csv_db(data):
-    with open('database2.csv', newline='',  mode='a') as database2:
+    with open('database.csv', newline='',  mode='a') as database:
         email = data['email']
         subject = data['subject']
         message = data['message']
         csv_writer = csv.writer(
-            database2, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL
+            database, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL
         )
         csv_writer.writerow([email, subject, message])
 
